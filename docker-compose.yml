@@ -4,6 +4,7 @@ services:
   ######## MONGODB SHARD0 ########
 
   shard0-replica0:
+    image: "shard0-replica0"
     build:
       context: mongod
     command: mongod -f /etc/mongod.conf --shardsvr --replSet shard0
@@ -19,6 +20,7 @@ services:
       - "27017"
 
   shard0-replica1:
+    image: "shard0-replica1"
     build:
       context: mongod
     command: mongod -f /etc/mongod.conf --shardsvr --replSet shard0
@@ -34,6 +36,7 @@ services:
       - "27017"
 
   shard0-replica2:
+    image: "shard0-replica2"
     build:
       context: mongod
     command: mongod -f /etc/mongod.conf --shardsvr --replSet shard0
@@ -51,6 +54,7 @@ services:
   ######## MONGODB SHARD1 ########
 
   shard1-replica0:
+    image: "shard1-replica0"
     build:
       context: mongod
     command: mongod -f /etc/mongod.conf --shardsvr --replSet shard1
@@ -66,6 +70,7 @@ services:
       - "27017"
 
   shard1-replica1:
+    image: "shard1-replica1"
     build:
       context: mongod
     command: mongod -f /etc/mongod.conf --shardsvr --replSet shard1
@@ -81,6 +86,7 @@ services:
       - "27017"
 
   shard1-replica2:
+    image: "shard1-replica2"
     build:
       context: mongod
     command: mongod -f /etc/mongod.conf --shardsvr --replSet shard1
@@ -98,6 +104,7 @@ services:
   ######## MONGODB CONFIGDB ########
 
   configdb-replica0:
+    image: "configdb-replica0"
     build:
       context: mongod
     command: mongod -f /etc/mongod.conf --configsvr --replSet configdb
@@ -113,6 +120,7 @@ services:
       - "27017"
 
   configdb-replica1:
+    image: "configdb-replica1"
     build:
       context: mongod
     command: mongod -f /etc/mongod.conf --configsvr --replSet configdb
@@ -128,6 +136,7 @@ services:
       - "27017"
 
   configdb-replica2:
+    image: "configdb-replica2"
     build:
       context: mongod
     command: mongod -f /etc/mongod.conf --configsvr --replSet configdb
@@ -145,6 +154,7 @@ services:
   ######## MONGODB MONGOS ########
 
   mongos-router0:
+    image: "mongos-router0"
     build:
       context: mongos
     command: mongos --port 27017 --bind_ip 0.0.0.0 --configdb "configdb/configdb-replica0:27017,configdb-replica1:27017,configdb-replica2:27017"
@@ -170,6 +180,7 @@ services:
       - "27017:27017"
 
   mongos-router1:
+    image: "mongos-router1"
     build:
       context: mongos
     command: mongos --port 27017 --bind_ip 0.0.0.0 --configdb "configdb/configdb-replica0:27017,configdb-replica1:27017,configdb-replica2:27017"
