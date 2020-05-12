@@ -219,12 +219,12 @@ networks:
   internalnetwork: {}
 
 volumes:
-  - dbdata-c-0:
-  - dbdata-c-1:
-  - dbdata-c-2:
-  - dbdata-s-0-0:
-  - dbdata-s-0-1:
-  - dbdata-s-0-2:
-  - dbdata-s-1-0:
-  - dbdata-s-1-1:
-  - dbdata-s-1-2:
+  dbdata-c-0:
+  dbdata-c-1:
+  dbdata-c-2:
+  dbdata-s-0-0:
+  dbdata-s-0-1:
+  dbdata-s-0-2:
+  dbdata-s-1-0:
+  dbdata-s-1-1:
+  dbdata-s-1-2:
