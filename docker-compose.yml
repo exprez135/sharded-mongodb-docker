@@ -19,7 +19,7 @@ services:
     deploy:
       mode: replicated
     volumes:
-      - dbdata:/data/db
+      - /data/db
 
   shard0-replica1:
     image: "localhost:5000/shard0-replica1"
@@ -27,7 +27,7 @@ services:
       context: mongod
     command: mongod -f /etc/mongod.conf --shardsvr --replSet shard0
     volumes:
-      - dbdata:/data/db
+      - /data/db
     networks:
       internalnetwork:
         aliases:
@@ -45,7 +45,7 @@ services:
       context: mongod
     command: mongod -f /etc/mongod.conf --shardsvr --replSet shard0
     volumes:
-      - dbdata:/data/db
+      - /data/db
     networks:
       internalnetwork:
         aliases:
@@ -65,7 +65,7 @@ services:
       context: mongod
     command: mongod -f /etc/mongod.conf --shardsvr --replSet shard1
     volumes:
-      - dbdata:/data/db
+      - /data/db
     networks:
       internalnetwork:
         aliases:
@@ -83,7 +83,7 @@ services:
       context: mongod
     command: mongod -f /etc/mongod.conf --shardsvr --replSet shard1
     volumes:
-      - dbdata:/data/db
+      - /data/db
     networks:
       internalnetwork:
         aliases:
@@ -101,7 +101,7 @@ services:
       context: mongod
     command: mongod -f /etc/mongod.conf --shardsvr --replSet shard1
     volumes:
-      - dbdata:/data/db
+      - /data/db
     networks:
       internalnetwork:
         aliases:
@@ -121,7 +121,7 @@ services:
       context: mongod
     command: mongod -f /etc/mongod.conf --configsvr --replSet configdb
     volumes:
-      - dbdata:/data/db
+      - /data/db
     networks:
       internalnetwork:
         aliases:
@@ -139,7 +139,7 @@ services:
       context: mongod
     command: mongod -f /etc/mongod.conf --configsvr --replSet configdb
     volumes:
-      - dbdata:/data/db
+      - /data/db
     networks:
       internalnetwork:
         aliases:
@@ -157,7 +157,7 @@ services:
       context: mongod
     command: mongod -f /etc/mongod.conf --configsvr --replSet configdb
     volumes:
-      - dbdata:/data/db
+      - /data/db
     networks:
       internalnetwork:
         aliases:
