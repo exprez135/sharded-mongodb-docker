@@ -19,7 +19,7 @@ services:
     deploy:
       mode: replicated
     volumes:
-      - dbdata:/data/db
+      - dbdata-s-0-0:/data/db
 
   shard0-replica1:
     image: "localhost:5000/shard0-replica1"
@@ -27,7 +27,7 @@ services:
       context: mongod
     command: mongod -f /etc/mongod.conf --shardsvr --replSet shard0
     volumes:
-      - dbdata:/data/db
+      - dbdata-s-0-1:/data/db
     networks:
       internalnetwork:
         aliases:
@@ -45,7 +45,7 @@ services:
       context: mongod
     command: mongod -f /etc/mongod.conf --shardsvr --replSet shard0
     volumes:
-      - dbdata:/data/db
+      - dbdata-s-0-2:/data/db
     networks:
       internalnetwork:
         aliases:
@@ -65,7 +65,7 @@ services:
       context: mongod
     command: mongod -f /etc/mongod.conf --shardsvr --replSet shard1
     volumes:
-      - dbdata:/data/db
+      - dbdata-s-1-0:/data/db
     networks:
       internalnetwork:
         aliases:
@@ -83,7 +83,7 @@ services:
       context: mongod
     command: mongod -f /etc/mongod.conf --shardsvr --replSet shard1
     volumes:
-      - dbdata:/data/db
+      - dbdata-s-1-1:/data/db
     networks:
       internalnetwork:
         aliases:
@@ -101,7 +101,7 @@ services:
       context: mongod
     command: mongod -f /etc/mongod.conf --shardsvr --replSet shard1
     volumes:
-      - dbdata:/data/db
+      - dbdata-s-1-2:/data/db
     networks:
       internalnetwork:
         aliases:
@@ -121,7 +121,7 @@ services:
       context: mongod
     command: mongod -f /etc/mongod.conf --configsvr --replSet configdb
     volumes:
-      - dbdata:/data/db
+      - dbdata-c-0:/data/db
     networks:
       internalnetwork:
         aliases:
@@ -139,7 +139,7 @@ services:
       context: mongod
     command: mongod -f /etc/mongod.conf --configsvr --replSet configdb
     volumes:
-      - dbdata:/data/db
+      - dbdata-c-1:/data/db
     networks:
       internalnetwork:
         aliases:
@@ -157,7 +157,7 @@ services:
       context: mongod
     command: mongod -f /etc/mongod.conf --configsvr --replSet configdb
     volumes:
-      - dbdata:/data/db
+      - dbdata-c-2:/data/db
     networks:
       internalnetwork:
         aliases:
@@ -217,3 +217,14 @@ services:
 
 networks:
   internalnetwork: {}
+
+volumes:
+  - dbdata-c-0:
+  - dbdata-c-1:
+  - dbdata-c-2:
+  - dbdata-s-0-0:
+  - dbdata-s-0-1:
+  - dbdata-s-0-2:
+  - dbdata-s-1-0:
+  - dbdata-s-1-1:
+  - dbdata-s-1-2:
