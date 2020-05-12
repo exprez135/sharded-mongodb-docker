@@ -5,7 +5,8 @@ services:
 
   mongod-config:
     image: "localhost:5000/mongod-config"
-    command: echo "c3RvcmFnZToKICAgIGRiUGF0aDogIi9kYXRhL2RiIgogICAgam91cm5hbDoKICAgICAgICBlbmFibGVkOiB0cnVlCgpzeXN0ZW1Mb2c6CiAgICBkZXN0aW5hdGlvbjogZmlsZQogICAgcGF0aDogIi9kYXRhL2RiL21vbmdvZC5sb2ciCiAgICBsb2dBcHBlbmQ6IHRydWUKCm5ldDoKICAgIGJpbmRJcDogMC4wLjAuMAogICAgcG9ydDogMjcwMTcKCnJlcGxpY2F0aW9uOgogICByZXBsU2V0TmFtZTogVGVzdFJTCgo=" | base64 -d > /etc/mongod.conf
+    build:
+      context: config-file
     deploy:
       mode: global
 
